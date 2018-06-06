@@ -1,0 +1,236 @@
+﻿@model IEnumerable<DynamicCharts.Models.PieChart>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div id="container1">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-settings font-green-sharp"></i>
+                <span class="caption-subject font-green-sharp bold uppercase">Charts</span>
+            </div>
+
+        </div>
+        <div class="portlet-body">
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-group"></i>
+                <div> Users </div>
+                <span class="badge badge-danger"> 2 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-barcode"></i>
+                <div> Products </div>
+                <span class="badge badge-success"> 4 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-bar-chart-o"></i>
+                <div> Vertical bar </div>
+                <span class="badge badge-success"> 5 </span>
+            </a>
+            <a v-on:click="add()" href="javascript:;" class="icon-btn">
+                <i class="fa fa-pie-chart"></i>
+                <div> Pie Chart </div>
+                <span class="badge badge-success"> 6 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-calendar"></i>
+                <div> Calendar </div>
+                <span class="badge badge-success"> 4 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-envelope"></i>
+                <div> Inbox </div>
+                <span class="badge badge-info"> 12 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-bullhorn"></i>
+                <div> Notification </div>
+                <span class="badge badge-danger"> 3 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-map-marker"></i>
+                <div> Locations </div>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-money">
+                    <i></i>
+                </i>
+                <div> Finance </div>
+            </a>
+
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-2">
+                    <button class="btn bg-primary" v-on:click="add()">Pie Chart</button>
+                </div>*@
+            <div class="col-md-12">
+
+                <div style="height: 300px; border: 1px solid blue; margin: 1em;">
+                   
+                    <draggablecomponent>
+                        <p>You can drag me around and resize me as you wish.</p>
+                    </draggablecomponent>
+
+                </div>
+
+
+                @*<pie_chart v-for="item in charts" axex='nom' axey='sales' title='Sales per Country' url='getData/' detail='Sales amount'></pie_chart>*@
+
+            </div>
+            <div id="droppable" class="col-md-12">
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<style>
+    .draggable {
+        background-color: lightgray;
+        padding: 2em;
+        float: left;
+        margin: 10px 10px 10px 0;
+    }
+
+    #droppable {
+        background-color: cornflowerblue;
+        width: 600px;
+        height: 800px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px;
+    }
+</style>
+<script>
+
+</script>
+
+
+@section VueComponents {
+
+
+
+
+
+
+    <template id="vuechart">
+        <div :class="classname"
+             :style="styles">
+        </div>
+    </template>
+    <script>
+
+        var vuehighcharts = Vue.component('vue-highcharts', {
+            template: '#vuechart',
+            props: {
+                classname: {
+                    type: String,
+                    default: 'vue-highcharts',
+                },
+                styles: {
+                    type: Object,
+                    default: function () {
+                        return {}
+                    },
+                },
+                options: {},
+                highcharts: Object,
+                test: 'rr'
+            },
+            name: 'VueHighcharts',
+            data() {
+                return {
+                    chart: null,
+                }
+            },
+            mounted() {
+                if (!this.getChart() && this.options) {
+                    this.init()
+                }
+            },
+
+            methods: {
+                getChart() {
+                    return this.chart
+                },
+
+                addSeries(options) {
+                    this.delegateMethod('addSeries', options)
+                },
+                removeSeries() {
+                    while (this.getChart().series.length !== 0) {
+                        this.getChart().series[0].remove()
+                    }
+                },
+                mergeOption(options) {
+                    this.delegateMethod('update', options)
+                },
+                showLoading(txt) {
+                    this.getChart().showLoading(txt)
+                },
+                hideLoading() {
+                    this.getChart().hideLoading()
+                },
+                delegateMethod(name, ...args) {
+                    if (!this.getChart()) {
+                        warn(
+                            `Cannot call [$name] before the chart is initialized. Set prop [options] first.`,
+                            this,
+                        )
+                        return
+                    }
+                    return this.getChart()[name](...args)
+                },
+
+                initHigcharts(product) { },
+
+                init() {
+                    console.log("hello")
+                    if (!this.getChart() && this.options) {
+                        let highchartInstance = this.highcharts || Highcharts
+                        this.chart = new highchartInstance.Chart(this.$el, this.options)
+                    }
+                },
+            },
+
+            watch: {
+                test: function (val) {
+
+                    console.log('heyyyy')
+                },
+                options: function (options) {
+                    console.log("Options Updated");
+                    if (!this.getChart() && options) {
+
+                        this.init()
+                    } else {
+                        this.getChart().update(this.options)
+                    }
+                },
+            },
+
+            beforeDestroy() {
+                if (this.getChart()) {
+                    this.getChart().destroy()
+                }
+            },
+        });
+    </script>
+
+
+
+}
+
+@section Scripts
+    {
+
+    <script src="~/Components/draggablecomponent.js"></script>
+    <script src="~/data/data.js"></script>
+}
+

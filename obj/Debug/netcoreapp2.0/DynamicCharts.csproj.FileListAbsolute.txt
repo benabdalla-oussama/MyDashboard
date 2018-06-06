@@ -1,0 +1,11 @@
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\bin\Debug\netcoreapp2.0\DynamicCharts.deps.json
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\bin\Debug\netcoreapp2.0\DynamicCharts.runtimeconfig.json
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\bin\Debug\netcoreapp2.0\DynamicCharts.runtimeconfig.dev.json
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\bin\Debug\netcoreapp2.0\DynamicCharts.dll
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\bin\Debug\netcoreapp2.0\DynamicCharts.pdb
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.csproj.CoreCompileInputs.cache
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.AssemblyInfoInputs.cache
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.AssemblyInfo.cs
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.dll
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.pdb
+C:\Users\Peaksource Win7\source\repos\DynamicCharts\DynamicCharts\obj\Debug\netcoreapp2.0\DynamicCharts.csprojAssemblyReference.cache
