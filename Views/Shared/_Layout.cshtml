@@ -33,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts-3d.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts-more.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -46,8 +46,8 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div id="app" >
+        <nav class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -69,19 +69,20 @@
                 </div>
             </div>
         </nav>
-        <div class="container body-content" >
+
+        <div class="container body-content vert-offset-top-4">
             @RenderBody()
             <hr />
-       
+
         </div>
     </div>
     <environment include="Development">
-        
+
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-     
+
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
@@ -92,7 +93,7 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
 
     </environment>
-  
+
     @RenderSection("VueComponents", required: false)
     <script>
 
@@ -101,54 +102,56 @@
 
 
         var url = "https://clients.itsd.com.bd/table-cartel/wp-json/wp/v2/categories";
-      
-  
 
 
-        Vue.use(VueResource)
-       
+        $(function () {
+            Vue.use(VueResource)
 
-        Vue.use(VeeValidate);
-        var vueApp = new Vue({
-            el: '#app',
-            data: {
-                donnees: Object,
-                titre: 'Title1',
-                charts: []
-              
-            },
-            methods: {
-      
-                add() {
-                    var newchart = {
-                        
-                        axex: "nom",
-                        axex: "sales",
-                        title: "erer",
-                        url: "getData/",
-                        detail: "Sales amount"
-
-                    }
-                    
-                    this.charts.push(newchart);
-                   
+            var vueApp = new Vue({
+                el: '#app',
+                data: {
+                    donnees: Object,
+                    titre: 'Title1',
+                    charts: []
 
                 },
-                work() {
-                    alert(url);
-                    console.log(this);
-                    this.$http.get(url).then(function (response) {
-                        alert(response.data);
-                        this.donnees = response.data;
-                    }, function (error) {
-                        alert(error.statusText);
-                    });
+                methods: {
+
+                    add() {
+                        var newchart = {
+
+                            axex: "nom",
+                            axex: "sales",
+                            title: "erer",
+                            url: "getData/",
+                            detail: "Sales amount"
+
+                        }
+
+                        this.charts.push(newchart);
+
+
+                    },
+                    work() {
+                        alert(url);
+                        console.log(this);
+                        this.$http.get(url).then(function (response) {
+                            alert(response.data);
+                            this.donnees = response.data;
+                        }, function (error) {
+                            alert(error.statusText);
+                        });
+                    }
+                },
+                created() {
+                    console.log('ttyty')
                 }
-            },
-            created() {
-                //this.work();
-            }
+            })
+
+
         })
+
+
 
 
     </script>

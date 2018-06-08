@@ -1,18 +1,16 @@
 ﻿
 .vdr {
     position: absolute;
-    box-sizing: border-box;
+   
 }
 
 .handle {
-    box-sizing: border-box;
+  
     display: none;
     position: absolute;
-    width: 10px;
-    height: 10px;
-    font-size: 1px;
-    background: #EEE;
-    border: 1px solid #333;
+    width: 1px;
+    height: 1px;
+
 }
 
 .handle-tl {

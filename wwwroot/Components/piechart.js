@@ -15,7 +15,7 @@ $(function () {
 
 
 Vue.component('pie_chart', {
-    template: `    <div class="charts col-md-6">
+    template: ` <div class="charts col-md-6">
         <div class="portlet light portlet-fit bordered">
             <div class="portlet-title">
                 <div class="caption">
@@ -23,13 +23,7 @@ Vue.component('pie_chart', {
                     <span class="caption-subject font-green bold uppercase">Donut Chart</span>
                 </div>
                 <div class="actions">
-                    <select v-on: change="onchange">
-
-                        @foreach (var item in Model)
-                        {
-                        <option value="@item.Id">@item.Title</option>
-                    }
-                    </select>
+          
                 <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                     <i class="icon-cloud-upload"></i>
                 </a>
@@ -41,11 +35,13 @@ Vue.component('pie_chart', {
                 </a>
             </div>
         </div>
-        <div class="portlet-body">
-            <vue-highcharts : options="pieOptions" ref="pieChart"></vue-highcharts>
+        <div class="portlet-body" style="  display: flex;
+  align-items: center;
+  justify-content: center">
+               <vue-highcharts :options="pieOptions" ref="pieChart"></vue-highcharts>
     </div>
         </div>
-    </div >`,
+    </div > `,
     props: ['title', 'axex', 'axey', 'detail', 'url'],
 
     data() {
@@ -96,8 +92,8 @@ Vue.component('pie_chart', {
         },
         onchange: function (e) {
 
-            var piecharts = @JavaScriptConvert.SerializeObject(Model);
-
+           // var piecharts = @JavaScriptConvert.SerializeObject(Model);
+            var piecharts;
             var pirchart = piecharts.filter(function (item) {
                 return item.id == e.target.value;
             });
@@ -116,4 +112,12 @@ Vue.component('pie_chart', {
     },
 
 });
+
+//<select v-on: change="onchange">
+
+//    @foreach (var item in Model)
+//                        {
+//        <option value="@item.Id">@item.Title</option>
+//    }
+//</select>
 

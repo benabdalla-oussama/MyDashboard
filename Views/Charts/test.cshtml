@@ -2,13 +2,274 @@
 @{
     ViewData["Title"] = "test";
 }
-<body>
-    <div class="container" style="margin-top:250px;">
-        
-        <greeter>
-            <p>You can drag me around and resize me as you wish.</p>
-        </greeter>
-       
+
+
+<div id="container1">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-settings font-green-sharp"></i>
+                <span class="caption-subject font-green-sharp bold uppercase">Charts</span>
+            </div>
+
+        </div>
+        <div class="portlet-body">
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-group"></i>
+                <div> Users </div>
+                <span class="badge badge-danger"> 2 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-barcode"></i>
+                <div> Products </div>
+                <span class="badge badge-success"> 4 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-bar-chart-o"></i>
+                <div> Vertical bar </div>
+                <span class="badge badge-success"> 5 </span>
+            </a>
+            <a v-on:click="add()" href="javascript:;" class="icon-btn">
+                <i class="fa fa-pie-chart"></i>
+                <div> Pie Chart </div>
+                <span class="badge badge-success"> 6 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-calendar"></i>
+                <div> Calendar </div>
+                <span class="badge badge-success"> 4 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-envelope"></i>
+                <div> Inbox </div>
+                <span class="badge badge-info"> 12 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-bullhorn"></i>
+                <div> Notification </div>
+                <span class="badge badge-danger"> 3 </span>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-map-marker"></i>
+                <div> Locations </div>
+            </a>
+            <a href="javascript:;" class="icon-btn">
+                <i class="fa fa-money">
+                    <i></i>
+                </i>
+                <div> Finance </div>
+            </a>
+
+        </div>
     </div>
-</body>
-<script src="~/Components/item.js"></script>
+    <br />
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>Settings
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse"> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                <a href="javascript:;" class="reload"> </a>
+                <a href="javascript:;" class="remove"> </a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+
+
+
+        </div>
+    </div>
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>Filters
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse"> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                <a href="javascript:;" class="reload"> </a>
+                <a href="javascript:;" class="remove"> </a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <div class="form-body">
+                <div class="form-group">
+                    <form action="#" class="mt-repeater form-horizontal">
+                        <h3 class="mt-repeater-title">Human Resource Management</h3>
+                        <div data-repeater-list="group-a">
+                            <div data-repeater-item class="mt-repeater-item">
+                                <!-- jQuery Repeater Container -->
+                                <div class="mt-repeater-input">
+                                    <label class="control-label">Name</label>
+                                    <br />
+                                    <input type="text" name="text-input" class="form-control" value="John Smith" />
+                                </div>
+                                <div class="mt-repeater-input">
+                                    <label class="control-label">Joined Date</label>
+                                    <br />
+                                    <input class="input-group form-control form-control-inline date date-picker" size="16" type="text" value="01/08/2016" name="date-input" data-date-format="dd/mm/yyyy" />
+                                </div>
+                                <div class="mt-repeater-input mt-repeater-textarea">
+                                    <label class="control-label">Job Description</label>
+                                    <br />
+                                    <textarea name="textarea-input" class="form-control" rows="3">This role is to follow up with all meetings and ensure that each operational process flow moves accordingly in a timely manner.</textarea>
+                                </div>
+                                <div class="mt-repeater-input mt-radio-inline">
+                                    <label class="control-label">Tier</label>
+                                    <br />
+                                    <label class="mt-radio">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios25" value="junior" checked=""> Junior
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-radio">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios26" value="senior" checked=""> Senior
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="mt-repeater-input mt-checkbox-inline">
+                                    <label class="control-label">Language</label>
+                                    <br />
+                                    <label class="mt-checkbox">
+                                        <input type="checkbox" id="inlineCheckbox21" value="option1"> English
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-checkbox">
+                                        <input type="checkbox" id="inlineCheckbox22" value="option2"> French
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="mt-repeater-input">
+                                    <label class="control-label">Department</label>
+                                    <br />
+                                    <select name="select-input" class="form-control">
+                                        <option value="A" selected>Marketing</option>
+                                        <option value="B">Creative</option>
+                                        <option value="C">Development</option>
+                                    </select>
+                                </div>
+                                <div class="mt-repeater-input">
+                                    <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
+                                        <i class="fa fa-close"></i> Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
+                            <i class="fa fa-plus"></i> Add
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>My Dashboard
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse"> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                <a href="javascript:;" class="reload"> </a>
+                <a href="javascript:;" class="remove"> </a>
+            </div>
+        </div>
+        <div style="height: 1000px;" class="portlet-body form">
+            <template v-for="element in charts">
+                <draggpable :resizable="true" :x="element.x" :y="element.y">
+                    <pie_chart axex='nom' axey='sales' title='Sales per Country' url='getData/' detail='Sales amount'></pie_chart>
+                </draggpable>
+            </template>
+        </div>
+    </div>
+    <div class="row col-md-12" id="sortable_portlets">
+        <div class="col-md-4 column sortable">
+            <div class="portlet portlet-sortable light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="icon-speech font-green-sharp"></i>
+                        <span class="caption-subject bold uppercase"> Portlet</span>
+                        <span class="caption-helper">details...</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-default btn-sm">
+                            <i class="fa fa-plus"></i> Add
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="scroller" style="height:200px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                        <h4>Heading Text</h4>
+                        <p>
+                            consectetur purus sit amet fermentum. consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+                            purus sit amet fermentum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- empty sortable porlet required for each columns! -->
+            <div class="portlet portlet-sortable-empty"> </div>
+        </div>
+   
+        <div class="col-md-4 column sortable">
+
+
+            <!-- empty sortable porlet required for each columns! -->
+            <!-- empty sortable porlet required for each columns! -->
+            <div class="portlet portlet-sortable-empty"> </div>
+            </div>
+            <div class="col-md-4 column sortable">
+
+
+                <!-- empty sortable porlet required for each columns! -->
+                <div class="portlet portlet-sortable-empty"> </div>
+            </div>
+
+        </div>
+
+
+</div>
+
+<style>
+    .draggable {
+        background-color: lightgray;
+        padding: 2em;
+        float: left;
+        margin: 10px 10px 10px 0;
+    }
+
+    #droppable {
+        background-color: cornflowerblue;
+        width: 600px;
+        height: 800px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px;
+    }
+</style>
+<script>
+
+</script>
+
+
+
+
+
+@section Scripts
+    {
+    <script src="~/js/portlet-draggable.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/Components/draggable.js"></script>
+    <script src="~/Components/vue-highcharts.js"></script>
+    <script src="~/Components/piechart.js"></script>
+    <script src="~/data/data.js"></script>
+}
