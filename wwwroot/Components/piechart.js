@@ -15,43 +15,22 @@ $(function () {
 
 
 Vue.component('pie_chart', {
-    template: ` <div class="charts col-md-6">
-        <div class="portlet light portlet-fit bordered">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class=" icon-layers font-green"></i>
-                    <span class="caption-subject font-green bold uppercase">Donut Chart</span>
-                </div>
-                <div class="actions">
-          
-                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                    <i class="icon-cloud-upload"></i>
-                </a>
-                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                    <i class="icon-wrench"></i>
-                </a>
-                <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                    <i class="icon-trash"></i>
-                </a>
-            </div>
-        </div>
-        <div class="portlet-body" style="  display: flex;
-  align-items: center;
-  justify-content: center">
-               <vue-highcharts :options="pieOptions" ref="pieChart"></vue-highcharts>
+    template: ` <div>
+            <vue-highcharts :options="pieOptions"  :high="myhigh" :width="mywidth" ref="pieChart"></vue-highcharts>
     </div>
-        </div>
-    </div > `,
-    props: ['title', 'axex', 'axey', 'detail', 'url'],
+     `,
+    props: ['title', 'axex', 'axey', 'detail', 'url','high','width'],
 
     data() {
 
         return {
-            pieOptions: PieData
+            pieOptions: PieData,
+            myhigh: 400,
+            mywidth: 400
         }
     },
     mounted() {
-
+        
     },
     created: function () {
         console.log(this.title)
@@ -59,6 +38,7 @@ Vue.component('pie_chart', {
         PieData.title.text = this.title;
         PieData.series[0].name = this.detail;
         this.getdata();
+     
     },
     methods: {
 
@@ -109,6 +89,18 @@ Vue.component('pie_chart', {
             this.getdata();
         }
 
+    },
+    watch: {
+   
+        high: function () {
+            console.log("High Updated "+this.high);
+            this.myhigh = this.high;
+           
+        },
+        width: function () {
+            console.log("Width Updated " + this.width);
+            this.mywidth = this.width;
+        },
     },
 
 });

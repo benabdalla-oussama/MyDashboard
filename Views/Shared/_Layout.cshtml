@@ -17,6 +17,9 @@
     </environment>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/css/highcharts.css" />
 
+    <link href="~/css/layout.min.css" rel="stylesheet" />
+
+
 
 
 
@@ -33,7 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts-3d.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.7/highcharts-more.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>*@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -42,6 +45,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" />
     <link href="~/css/components.min.css" rel="stylesheet" />
+
+
+
+    <link href="~/lib/Vue-material/vue-material.min.css" rel="stylesheet" />
+    <script src="~/lib/Vue-material/vue-material.min.js"></script>
+
 
 
 </head>
@@ -66,7 +75,9 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     </ul>
+               
                 </div>
+          
             </div>
         </nav>
 
@@ -109,23 +120,45 @@
 
             var vueApp = new Vue({
                 el: '#app',
+         
                 data: {
                     donnees: Object,
                     titre: 'Title1',
-                    charts: []
+                    charts: [], 
+                    high: 300,
+                    width: 300,
+                    minimized: false,
+                    mobileOpen: false
 
                 },
                 methods: {
-
+                    resize: function (w,h,i) {
+                        this.charts[i].high = h-5;
+                        this.charts[i].width = w-5;
+                    },
+                 
+                    firstLinkClick () {
+                        alert('Hey you clicked me!')
+                    },
+                    toggleSideBar () {
+                        this.minimized = !this.minimized
+                    },
+                    openMobileMenu () {
+                        this.mobileOpen = !this.mobileOpen
+                    },
                     add() {
+                        var x = $("#dashboard").position();
                         var newchart = {
 
                             axex: "nom",
                             axex: "sales",
                             title: "erer",
                             url: "getData/",
-                            detail: "Sales amount"
-
+                            detail: "Sales amount",
+                            high: 300,
+                            width: 300,
+                            x: x.left,
+                            y: x.top
                         }
 
                         this.charts.push(newchart);
@@ -144,6 +177,7 @@
                     }
                 },
                 created() {
+               
                     console.log('ttyty')
                 }
             })

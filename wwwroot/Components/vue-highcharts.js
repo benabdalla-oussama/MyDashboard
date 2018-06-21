@@ -14,6 +14,8 @@
             },
         },
         options: {},
+        high: {},
+        width: {},
         highcharts: Object,
         test: 'rr'
     },
@@ -85,6 +87,24 @@
                 this.init()
             } else {
                 this.getChart().update(this.options)
+            }
+        },
+        high: function (options) {
+            console.log("High Updated");
+            if (!this.getChart() && options) {
+
+                this.init()
+            } else {
+                this.getChart().setSize(this.high,this.width)
+            }
+        },
+        width: function (options) {
+            console.log("Width Updated");
+            if (!this.getChart() && options) {
+
+                this.init()
+            } else {
+                this.getChart().setSize(this.high, this.width)
             }
         },
     },

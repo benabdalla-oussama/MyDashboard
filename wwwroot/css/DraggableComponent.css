@@ -1,70 +1,67 @@
 ﻿
+
 .vdr {
     position: absolute;
-   
+    box-sizing: border-box;
 }
-
 .handle {
-  
+    
     display: none;
     position: absolute;
-    width: 1px;
-    height: 1px;
-
+    height: 25px;
+    width: 25px;
+    background-color: #64B5F6;
+    border-radius: 50%;
+    
 }
-
+.circle:before {
+    content: ' \25CF';
+    font-size: 25px;
+}
 .handle-tl {
     top: -10px;
     left: -10px;
     cursor: nw-resize;
 }
-
 .handle-tm {
     top: -10px;
     left: 50%;
     margin-left: -5px;
     cursor: n-resize;
 }
-
 .handle-tr {
     top: -10px;
     right: -10px;
     cursor: ne-resize;
 }
-
 .handle-ml {
     top: 50%;
     margin-top: -5px;
     left: -10px;
     cursor: w-resize;
 }
-
 .handle-mr {
     top: 50%;
     margin-top: -5px;
     right: -10px;
     cursor: e-resize;
 }
-
 .handle-bl {
     bottom: -10px;
     left: -10px;
     cursor: sw-resize;
 }
-
 .handle-bm {
     bottom: -10px;
     left: 50%;
     margin-left: -5px;
     cursor: s-resize;
 }
-
 .handle-br {
     bottom: -10px;
     right: -10px;
     cursor: se-resize;
 }
-
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="handle-"]:before {
@@ -76,4 +73,3 @@
         position: absolute;
     }
 }
-
