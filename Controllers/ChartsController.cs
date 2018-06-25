@@ -35,10 +35,10 @@ namespace DynamicCharts.Controllers
         {
             List<Country> countries = new List<Country>()
             {
-                new Country{nom = "Tunisie", sales = 150 , population = 12000000} ,
-                new Country{nom = "US", sales = 250, population = 244000000} ,
-                new Country{nom = "France", sales = 200, population = 250000000} ,
-                new Country{nom = "Turkey", sales = 120, population = 79000000} 
+                new Country{Name = "Tunisie", Sales = 150 , Population = 12000000} ,
+                new Country{Name = "US", Sales = 250, Population = 244000000} ,
+                new Country{Name = "France", Sales = 200, Population = 250000000} ,
+                new Country{Name = "Turkey", Sales = 120, Population = 79000000} 
 
             };
             List<Object> modelView = new List<Object>();
@@ -72,6 +72,12 @@ namespace DynamicCharts.Controllers
             }
             return modelView;
         }
+
+        [HttpGet("getDashboards")]
+        public IEnumerable<Dashboard> getDashboards()
+        {
+            return _context.Dashboards.ToList();
+          }
         public static object GetPropValue(object src, string propName)
         {
             return src.GetType().GetProperty(propName).GetValue(src, null);

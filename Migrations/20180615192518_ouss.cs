@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DynamicCharts.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class ouss : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

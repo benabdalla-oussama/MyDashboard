@@ -8,9 +8,9 @@ namespace DynamicCharts.Models
     public class Country
     {
         public int Id { get; set; }
-        public string nom { get; set; }
-        public double sales { get; set; }
-        public long population { get; set; }
+        public string Name { get; set; }
+        public double Sales { get; set; }
+        public long Population { get; set; }
        
     }
 }

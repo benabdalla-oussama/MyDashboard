@@ -15,6 +15,15 @@ namespace DynamicCharts.Data
 
         public DbSet<PieChart> PieCharts { get; set; }
         public DbSet<Country> Countrys { get; set; }
-      
-    }
+        public DbSet<Dashboard> Dashboards { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Dashboard>()
+                .HasMany(c => c.Piecharts)
+                .WithOne(c => c.Dashboard);
+
+        }
+
+         }
 }

@@ -11,9 +11,10 @@ using System;
 namespace DynamicCharts.Migrations
 {
     [DbContext(typeof(dbcontext))]
-    partial class dbcontextModelSnapshot : ModelSnapshot
+    [Migration("20180621155557_mig5")]
+    partial class mig5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +56,9 @@ namespace DynamicCharts.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("DashboardId");
-
                     b.Property<string>("Detail");
+
+                    b.Property<int>("IdDashboard");
 
                     b.Property<string>("Title");
 
@@ -77,16 +78,17 @@ namespace DynamicCharts.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DashboardId");
+                    b.HasIndex("IdDashboard");
 
                     b.ToTable("PieCharts");
                 });
 
             modelBuilder.Entity("DynamicCharts.Models.PieChart", b =>
                 {
-                    b.HasOne("DynamicCharts.Models.Dashboard", "Dashboard")
+                    b.HasOne("DynamicCharts.Models.Dashboard")
                         .WithMany("Piecharts")
-                        .HasForeignKey("DashboardId");
+                        .HasForeignKey("IdDashboard")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

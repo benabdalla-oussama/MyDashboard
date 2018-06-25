@@ -46,14 +46,14 @@
             },
             w: {
                 type: Number,
-                default: 400,
+                default: 700,
                 validator: function (val) {
                     return val > 0
                 }
             },
             h: {
                 type: Number,
-                default: 400,
+                default: 700,
                 validator: function (val) {
                     return val > 0
                 }
@@ -70,6 +70,20 @@
                 default: 200,
                 validator: function (val) {
                     return val >= 0
+                }
+            },
+            elementx: {
+                type: Number,
+                default: 0,
+                validator: function (val) {
+                    return typeof val === 'number'
+                }
+            },
+            elementy: {
+                type: Number,
+                default: 0,
+                validator: function (val) {
+                    return typeof val === 'number'
                 }
             },
             x: {
@@ -161,8 +175,9 @@
             this.elmW = this.$el.offsetWidth || this.$el.clientWidth
             this.elmH = this.$el.offsetHeight || this.$el.clientHeight
             this.reviewDimensions();
+            this.left = this.elementx;
+            this.top = this.elementy;
            
-            console.log("Index :"+this.index);
         },
         beforeDestroy: function () {
             document.documentElement.removeEventListener('mousemove', this.handleMove, true)
@@ -202,6 +217,7 @@
                 }
                 this.elmW = this.width
                 this.elmH = this.height
+              
                 this.$emit('resizing', this.left, this.top, this.width, this.height)
               
             },

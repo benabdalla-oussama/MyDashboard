@@ -47,7 +47,6 @@
     <link href="~/css/components.min.css" rel="stylesheet" />
 
 
-
     <link href="~/lib/Vue-material/vue-material.min.css" rel="stylesheet" />
     <script src="~/lib/Vue-material/vue-material.min.js"></script>
 
@@ -111,84 +110,76 @@
 
 
 
-
-        var url = "https://clients.itsd.com.bd/table-cartel/wp-json/wp/v2/categories";
-
-
         $(function () {
             Vue.use(VueResource)
 
             var vueApp = new Vue({
                 el: '#app',
-         
+
                 data: {
-                    donnees: Object,
-                    titre: 'Title1',
-                    charts: [], 
-                    high: 300,
-                    width: 300,
-                    minimized: false,
-                    mobileOpen: false
+               
+                    dashboards: [],
+                    url: "api/Dashboards"
 
                 },
                 methods: {
-                    resize: function (w,h,i) {
-                        this.charts[i].high = h-5;
-                        this.charts[i].width = w-5;
-                    },
-                 
-                    firstLinkClick () {
-                        alert('Hey you clicked me!')
-                    },
-                    toggleSideBar () {
-                        this.minimized = !this.minimized
-                    },
-                    openMobileMenu () {
-                        this.mobileOpen = !this.mobileOpen
+                    select: function(element) {
+                       
+                        console.log(element); // returns 'foo'
+                        this.$refs.mydash.clear();
+                        this.$refs.mydash.clear();
+                        for (var index in element.piecharts) { 
+                            var attr = element.piecharts[index];
+                            this.$refs.mydash.additem(attr);
+                        }
                     },
                     add() {
-                        var x = $("#dashboard").position();
-                        var newchart = {
+                        this.$refs.mydash.add();
+                     },
+                    getdata() {
+                        $this = this;
+                        $.ajax({
+                            type: "GET",
+                            url: $this.url ,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
 
-                            axex: "nom",
-                            axex: "sales",
-                            title: "erer",
-                            url: "getData/",
-                            detail: "Sales amount",
-                            high: 300,
-                            width: 300,
-                            x: x.left,
-                            y: x.top
-                        }
+                                //for (var index in data) { 
+                                //    var attr = data[index];
+                                //    $this.dashboards.push(attr);
+                                //}
+                                $this.dashboards
+                                
+                                // console.log(PieData);
+                            }, //End of AJAX Success function
 
-                        this.charts.push(newchart);
+                            failure: function (data) {
+                                alert("failure");
+                                alert(data.responseText);
+                            }, //End of AJAX failure function
+                            error: function (data) {
+                                alert("erreur");
+                                alert(data.responseText);
+                            } //End of AJAX error function
 
-
-                    },
-                    work() {
-                        alert(url);
-                        console.log(this);
-                        this.$http.get(url).then(function (response) {
-                            alert(response.data);
-                            this.donnees = response.data;
-                        }, function (error) {
-                            alert(error.statusText);
                         });
                     }
+
                 },
                 created() {
-               
-                    console.log('ttyty')
+                    this.getdata();
+                    console.log('Created');
                 }
-            })
+
+            });
 
 
         })
 
 
-
-
     </script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

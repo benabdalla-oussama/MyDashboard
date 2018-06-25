@@ -11,9 +11,10 @@ using System;
 namespace DynamicCharts.Migrations
 {
     [DbContext(typeof(dbcontext))]
-    partial class dbcontextModelSnapshot : ModelSnapshot
+    [Migration("20180615192518_ouss")]
+    partial class ouss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,37 +26,21 @@ namespace DynamicCharts.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("nom");
 
-                    b.Property<long>("Population");
+                    b.Property<long>("population");
 
-                    b.Property<double>("Sales");
+                    b.Property<double>("sales");
 
                     b.HasKey("Id");
 
                     b.ToTable("Countrys");
                 });
 
-            modelBuilder.Entity("DynamicCharts.Models.Dashboard", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Dashboards");
-                });
-
             modelBuilder.Entity("DynamicCharts.Models.PieChart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("DashboardId");
 
                     b.Property<string>("Detail");
 
@@ -67,26 +52,9 @@ namespace DynamicCharts.Migrations
 
                     b.Property<string>("YAxis");
 
-                    b.Property<int>("high");
-
-                    b.Property<int>("width");
-
-                    b.Property<int>("x");
-
-                    b.Property<int>("y");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("DashboardId");
-
                     b.ToTable("PieCharts");
-                });
-
-            modelBuilder.Entity("DynamicCharts.Models.PieChart", b =>
-                {
-                    b.HasOne("DynamicCharts.Models.Dashboard", "Dashboard")
-                        .WithMany("Piecharts")
-                        .HasForeignKey("DashboardId");
                 });
 #pragma warning restore 612, 618
         }
