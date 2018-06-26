@@ -55,7 +55,7 @@
 </head>
 <body>
     <div id="app" >
-        <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  navbar-fixed-top " style="background-color: #E1E5EC;">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -126,7 +126,7 @@
                     select: function(element) {
                        
                         console.log(element); // returns 'foo'
-                        this.$refs.mydash.clear();
+         
                         this.$refs.mydash.clear();
                         for (var index in element.piecharts) { 
                             var attr = element.piecharts[index];
@@ -135,7 +135,19 @@
                     },
                     add() {
                         this.$refs.mydash.add();
-                     },
+                    },
+                    adddashboard() {
+                        var d = new Date();
+                        var newpage = $('#newpage').val();
+                        var dashboard = {
+                            title: newpage,
+                            date: d
+                        }
+                        this.dashboards.push(dashboard);
+                        console.log(newchart);
+                        this.charts.push(newchart);
+                        $('#newpage').val("");
+                    },
                     getdata() {
                         $this = this;
                         $.ajax({
@@ -145,12 +157,11 @@
                             dataType: "json",
                             success: function (data) {
 
-                                //for (var index in data) { 
-                                //    var attr = data[index];
-                                //    $this.dashboards.push(attr);
-                                //}
-                                $this.dashboards
-                                
+                                for (var index in data) { 
+                                    var attr = data[index];
+                                    $this.dashboards.push(attr);
+                                }
+                              
                                 // console.log(PieData);
                             }, //End of AJAX Success function
 

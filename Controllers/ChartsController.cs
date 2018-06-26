@@ -30,8 +30,8 @@ namespace DynamicCharts.Controllers
         }
 
 
-        [HttpGet("getData2/{axeX}/{axeY}")]
-        public IEnumerable<Object> getData2(string axeX , string axeY)
+        [HttpGet("getData2/{xAxis}/{yAxis}")]
+        public IEnumerable<Object> getData2(string xAxis , string yAxis)
         {
             List<Country> countries = new List<Country>()
             {
@@ -49,24 +49,24 @@ namespace DynamicCharts.Controllers
 
                 IDictionary<string, object> myUnderlyingObject = myobject;
 
-                myUnderlyingObject.Add(axeX, GetPropValue(item, axeX));
-                myUnderlyingObject.Add(axeY, GetPropValue(item, axeY));
+                myUnderlyingObject.Add(xAxis, GetPropValue(item, xAxis));
+                myUnderlyingObject.Add(yAxis, GetPropValue(item, yAxis));
                 modelView.Add(myUnderlyingObject);
 
             }
             return modelView;
         }
 
-        [HttpGet("getData/{axeX}/{axeY}")]
-        public IEnumerable<Object> getData(string axeX, string axeY)
+        [HttpGet("getData/{xAxis}/{yAxis}")]
+        public IEnumerable<Object> getData(string xAxis, string yAxis)
         {
            
             List<List<Object>> modelView = new List<List<Object>>();
             foreach (var item in _context.Countrys.ToList())
             {
                 List<Object> list = new List<Object>();
-                list.Add(GetPropValue(item, axeX));
-                list.Add(GetPropValue(item, axeY));
+                list.Add(GetPropValue(item, xAxis));
+                list.Add(GetPropValue(item, yAxis));
                 modelView.Add(list);
 
             }

@@ -8082,7 +8082,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 // A special extend for ajax options
 // that takes "flat" options (not to be deep extended)
 // Fixes #9887
-function ajaxExtend( target, src ) {
+function ajxAxistend( target, src ) {
 	var key, deep,
 		flatOptions = jQuery.ajaxSettings.flatOptions || {};
 
@@ -8325,7 +8325,7 @@ jQuery.extend( {
 		// For options that shouldn't be deep extended:
 		// you can add your own custom options here if
 		// and when you create one that shouldn't be
-		// deep extended (see ajaxExtend)
+		// deep extended (see ajxAxistend)
 		flatOptions: {
 			url: true,
 			context: true
@@ -8339,10 +8339,10 @@ jQuery.extend( {
 		return settings ?
 
 			// Building a settings object
-			ajaxExtend( ajaxExtend( target, jQuery.ajaxSettings ), settings ) :
+			ajxAxistend( ajxAxistend( target, jQuery.ajaxSettings ), settings ) :
 
 			// Extending ajaxSettings
-			ajaxExtend( jQuery.ajaxSettings, target );
+			ajxAxistend( jQuery.ajaxSettings, target );
 	},
 
 	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),

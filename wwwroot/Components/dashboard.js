@@ -22,7 +22,7 @@ Vue.component('dashboard',
                                 <template v-for="(element, index) in charts">
                                 <draggpable :parent="true" v-on:resize="resize" :resizable="true" :h="element.high" :w="element.width" :elementx="element.elementx" :elementy="element.elementy" :index="index" :x="element.x" :y="element.y" style="border: 1px solid; border-color: #64B5F6">
 
-                                    <pie_chart  :msg="msg" :axex="element.axex" :high="element.high" :width="element.width" :axey="element.axey" :title="element.title" :url="element.url" :detail="element.detail"></pie_chart>
+                                    <pie_chart  :msg="msg" :xAxis="element.xAxis" :high="element.high" :width="element.width" :yAxis="element.yAxis" :title="element.title" :url="element.url" :detail="element.detail"></pie_chart>
                                 
                                 </draggpable>
                                 </template>
@@ -47,10 +47,10 @@ Vue.component('dashboard',
 
             resize: function (w, h, i) {
                 
-                console.log("resize from "+this.charts[i].axex );
+                console.log("resize from "+this.charts[i].xAxis );
                 this.charts[i].high = h - 5;
                 this.charts[i].width = w - 5;
-                this.charts[i].axex = "gggggggg";
+                this.charts[i].xAxis = "gggggggg";
                 this.msg = "Message Updated";
                 console.log(" To " + this.msg );
                
@@ -72,8 +72,8 @@ Vue.component('dashboard',
                 var x = $("#dashboard1").position();
                 var newchart = {
 
-                    axex: "Name",
-                    axey: "Sales",
+                    xAxis: "Name",
+                    yAxis: "Sales",
                     title: "Sales per Country",
                     url: "getData/",
                     detail: "Sales amount",
@@ -91,8 +91,8 @@ Vue.component('dashboard',
                 var x = $("#dashboard1").position();
                 var newchart = {
 
-                    axex: item.xAxis,
-                    axey: item.yAxis,
+                    xAxis: item.xAxis,
+                    yAxis: item.yAxis,
                     title: item.title,
                     url: item.url,
                     detail: item.detail,

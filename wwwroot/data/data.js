@@ -4,7 +4,9 @@
 var PieData = {
 
     chart: {
-        type: 'pie',
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
         options3d: {
             enabled: false          
         }
@@ -16,12 +18,17 @@ var PieData = {
         text: '3D donut in Highcharts'
     },
     plotOptions: {
-        pie: {
-            innerSize: 100,
-            depth: 45
-        }
+        allowPointSelect: true,
+        cursor: 'pointer',
+
+        dataLabels: {
+            enabled: false
+        },
+
+        showInLegend: true
     },
     series: [{
+        type: 'pie',
         name: ' ',
         data: [ ]
     }]

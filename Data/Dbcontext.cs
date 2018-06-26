@@ -22,7 +22,6 @@ namespace DynamicCharts.Data
             modelBuilder.Entity<Dashboard>()
                 .HasMany(c => c.Piecharts)
                 .WithOne(c => c.Dashboard);
-
         }
 
          }

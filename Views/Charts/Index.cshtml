@@ -86,27 +86,44 @@
             <ul class="nav nav-tabs">
                 <li class="active">
                     <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab" aria-expanded="true">
-                        Pages
+                        Settings
                         <span class="badge badge-danger">2</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab" aria-expanded="false">
-                        Settings
+                        Filters
                         <span class="badge badge-success">7</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab" aria-expanded="false">
-                        Filters
+                        Pages
                         <span class="badge badge-success">7</span>
                     </a>
                 </li>
             </ul>
             <div class="tab-content">
+
                 <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_1">
                     <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
+                        <h3> Settings </h3>
+                    </div>
+                </div>
+                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_2">
+                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
+                        <h3> Fielters </h3>
+                    </div>
+                </div>
+                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_3">
+                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
                         <div class="tab-pane active" id="tab_actions_pending">
+                            <div class="input-group">
+                                <input id="newpage" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn blue" v-on:click="adddashboard" type="button">ADD</button>
+                                </span>
+                            </div>
                             <!-- BEGIN: Actions -->
                             <div class="mt-actions">
 
@@ -114,27 +131,29 @@
                                     <div class="mt-action" v-on:click="select(element)">
 
                                         <div class="mt-action-body">
-                                            <div class="mt-action-row">
-                                                <div class="mt-action-info ">
-                                                    <div class="mt-action-icon ">
-                                                        <i class="fa fa-line-chart"></i>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="mt-action-info col-md-2">
+                                                        <div class="mt-action-icon ">
+                                                            <i class="fa fa-line-chart"></i>
+                                                        </div>
+                                                        <div class="mt-action-details ">
+                                                            <span class="mt-action-author">{{element.title}}</span>
+
+                                                        </div>
                                                     </div>
-                                                    <div class="mt-action-details ">
-                                                        <span class="mt-action-author">{{element.title}}</span>
+                                                    @*<div class="mt-action-datetime ">
+                                                <span class="mt-action-date">{{element.date}}</span>
 
+                                            </div>*@
+                                                    <div class="mt-action-buttons col-md-1">
+                                                        <a href="javascript:;" class="btn btn-circle red-sunglo ">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </a>
                                                     </div>
-                                                </div>
-                                                <div class="mt-action-datetime ">
-                                                    <span class="mt-action-date">{{element.date}}</span>
-
-                                                </div>
-                                                <div class="mt-action-buttons ">
-                                                    <a href="javascript:;" class="btn btn-circle red-sunglo ">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </a>
-                                                </div>
 
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -142,16 +161,6 @@
                             </div>
                             <!-- END: Actions -->
                         </div>
-
-                    </div>
-                </div>
-                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_2">
-                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
-
-                    </div>
-                </div>
-                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_3">
-                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
 
                     </div>
                 </div>

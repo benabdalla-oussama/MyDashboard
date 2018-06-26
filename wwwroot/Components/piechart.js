@@ -19,7 +19,7 @@ Vue.component('pie_chart',
             <vue-highcharts :options="pieOptions"  :high="myhigh" :width="mywidth" ref="pieChart"></vue-highcharts>
     </div>
      `,
-        props: ['title', 'axex', 'axey', 'detail', 'url', 'high', 'width', 'msg'],
+        props: ['title', 'xAxis', 'yAxis', 'detail', 'url', 'high', 'width', 'msg'],
 
         data() {
 
@@ -48,7 +48,7 @@ Vue.component('pie_chart',
                 $this = this;
                 $.ajax({
                     type: "GET",
-                    url: $this.url + $this.axex + "/" + $this.axey,
+                    url: $this.url + $this.xAxis + "/" + $this.yAxis,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(data) {
@@ -83,8 +83,8 @@ Vue.component('pie_chart',
                     console.log("Width Updated " + this.width);
                     this.mywidth = this.width;
                 },
-                axex: function() {
-                    console.log("axex Updated " + this.axex);
+                xAxis: function() {
+                    console.log("xAxis Updated " + this.xAxis);
 
                 },
                 msg: function () {

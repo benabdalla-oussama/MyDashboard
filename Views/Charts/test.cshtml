@@ -183,7 +183,7 @@
         <div style="height: 1000px;" class="portlet-body form">
             <template v-for="element in charts">
                 <draggpable :resizable="true" :x="element.x" :y="element.y">
-                    <pie_chart axex='nom' axey='sales' title='Sales per Country' url='getData/' detail='Sales amount'></pie_chart>
+                    <pie_chart xAxis='nom' yAxis='sales' title='Sales per Country' url='getData/' detail='Sales amount'></pie_chart>
                 </draggpable>
             </template>
         </div>
