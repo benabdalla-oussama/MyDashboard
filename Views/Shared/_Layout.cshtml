@@ -112,14 +112,15 @@
 
         $(function () {
             Vue.use(VueResource)
-
+            Vue.prototype.$eventHub = new Vue(); // Global event bus
             var vueApp = new Vue({
                 el: '#app',
 
                 data: {
                
                     dashboards: [],
-                    url: "api/Dashboards"
+                    url: "api/Dashboards",
+                    settings: 'pie-settings'
 
                 },
                 methods: {
@@ -133,9 +134,15 @@
                             this.$refs.mydash.additem(attr);
                         }
                     },
-                    add() {
-                        this.$refs.mydash.add();
+                    add(chartOptions) {
+                        console.log(chartOptions);
+                        this.$refs.mydash.add(chartOptions);
+                      
                     },
+                    chooseSettings(content) {
+                        this.settings = content;
+                    },
+                   
                     adddashboard() {
                         var d = new Date();
                         var newpage = $('#newpage').val();
@@ -178,9 +185,13 @@
                     }
 
                 },
+            
                 created() {
                     this.getdata();
                     console.log('Created');
+                    this.$eventHub.$on('add-chart', this.add);
+                    this.$eventHub.$on('chooseSettings', this.chooseSettings);
+
                 }
 
             });

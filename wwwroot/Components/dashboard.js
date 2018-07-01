@@ -19,12 +19,14 @@ Vue.component('dashboard',
                         <div id="dashboard1" style="height: 1000px;" class="portlet-body form">
 
                             
-                                <template v-for="(element, index) in charts">
+                                <template  v-for="(element, index) in charts">
+                              
                                 <draggpable :parent="true" v-on:resize="resize" :resizable="true" :h="element.high" :w="element.width" :elementx="element.elementx" :elementy="element.elementy" :index="index" :x="element.x" :y="element.y" style="border: 1px solid; border-color: #64B5F6">
-
-                                    <pie_chart  :msg="msg" :xAxis="element.xAxis" :high="element.high" :width="element.width" :yAxis="element.yAxis" :title="element.title" :url="element.url" :detail="element.detail"></pie_chart>
-                                
+                                    <div v-on:click="select(index)">
+                                        <pie_chart :options="element.options" :msg="msg" :xAxis="element.xAxis" :high="element.high" :width="element.width" :yAxis="element.yAxis" :title="element.title" :url="element.url" :detail="element.detail"></pie_chart>
+                                    </div>
                                 </draggpable>
+                            
                                 </template>
                             
 
@@ -68,7 +70,26 @@ Vue.component('dashboard',
             clear() {
                 this.charts = [];
             },
-            add() {
+            changeChart(content) {
+
+                console.log(content);
+                
+                this.$set(this.charts, content.index, content);
+               // this.charts[content.index] = content;
+                console.log("Chart Updated");
+                //console.log(this.charts[content.index]);
+            },
+            select(index) {
+
+                console.log(index);
+                //this.charts.splice(index, 1);
+                var chart = jQuery.extend(true, {}, this.charts[index]);
+               
+                chart.index = index;
+                this.$eventHub.$emit('chartSelected', chart);
+
+            },
+            add(chartOptions) {
                 var x = $("#dashboard1").position();
                 var newchart = {
 
@@ -77,14 +98,15 @@ Vue.component('dashboard',
                     title: "Sales per Country",
                     url: "getData/",
                     detail: "Sales amount",
-                    high: 300,
-                    width: 300,
+                    high: 400,
+                    width: 400,
                     x: x.left,
                     y: x.top,
                     elementx: x.left,
-                    elementy: x.top
+                    elementy: x.top,
+                    options: chartOptions
                 }
-
+                //console.log(chartOptions);
                 this.charts.push(newchart);
             },
             additem(item) {
@@ -106,6 +128,14 @@ Vue.component('dashboard',
                 console.log(newchart);
                 this.charts.push(newchart);
             }
+
+        },
+
+        created() {
+         
+            console.log('Dashboard Created');
+            this.$eventHub.$on('change-chart', this.changeChart);
+          
 
         }
     })

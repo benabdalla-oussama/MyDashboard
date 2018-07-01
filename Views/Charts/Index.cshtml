@@ -30,12 +30,12 @@
                 <div> Vertical bar </div>
                 <span class="badge badge-success"> 5 </span>
             </a>
-            <a v-on:click="add()" href="javascript:;" class="icon-btn">
+            <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler">
                 <i class="fa fa-pie-chart"></i>
                 <div> Pie Chart </div>
                 <span class="badge badge-success"> 6 </span>
             </a>
-            <a href="javascript:;" class="icon-btn">
+            <a href="javascript:;" class="icon-btn quick-sidebar-toggler">
                 <i class="fa fa-calendar"></i>
                 <div> Calendar </div>
                 <span class="badge badge-success"> 4 </span>
@@ -61,7 +61,8 @@
                 <div> Finance </div>
             </a>
             <li class="dropdown dropdown-quick-sidebar-toggler">
-                <a href="javascript:;" class="dropdown-toggle">
+                <a href="javascript:;" class="
+                   ">
                     <i class="icon-logout"></i>
                 </a>
             </li>
@@ -73,7 +74,7 @@
 
     @* Dashboard Area*@
 
-    <dashboard ref="mydash" ></dashboard>
+    <dashboard ref="mydash"></dashboard>
 
     @* Side Bar Area*@
 
@@ -85,19 +86,19 @@
         <div class="page-quick-sidebar">
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab" aria-expanded="true">
+                    <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">
                         Settings
                         <span class="badge badge-danger">2</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab" aria-expanded="false">
+                    <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab">
                         Filters
                         <span class="badge badge-success">7</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab" aria-expanded="false">
+                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
                         Pages
                         <span class="badge badge-success">7</span>
                     </a>
@@ -106,16 +107,22 @@
             <div class="tab-content">
 
                 <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_1">
-                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
-                        <h3> Settings </h3>
+                    <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list" id="signup-form">
+                        @*-------------------------------------------------*@
+                        <h3 class="list-heading">Settings</h3>
+
+                        <settings :type="settings"></settings>
+
+                        @*-------------------------------------------------*@
+
                     </div>
                 </div>
-                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_2">
+                <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_2">
                     <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
                         <h3> Fielters </h3>
                     </div>
                 </div>
-                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_3">
+                <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_3">
                     <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
                         <div class="tab-pane active" id="tab_actions_pending">
                             <div class="input-group">
@@ -143,9 +150,9 @@
                                                         </div>
                                                     </div>
                                                     @*<div class="mt-action-datetime ">
-                                                <span class="mt-action-date">{{element.date}}</span>
+                                                            <span class="mt-action-date">{{element.date}}</span>
 
-                                            </div>*@
+                                                        </div>*@
                                                     <div class="mt-action-buttons col-md-1">
                                                         <a href="javascript:;" class="btn btn-circle red-sunglo ">
                                                             <i class="fa fa-trash-o"></i>
@@ -174,7 +181,9 @@
 
 </div>
 
+<script>
 
+</script>
 
 
 
@@ -205,28 +214,33 @@
     }
 </style>
 @section VueComponents
-{
+    {
     <script src="~/js/utils/dom.js"></script>
     <script src="~/js/portlet-draggable.js"></script>
     <script src="~/Components/draggable.js"></script>
     <script src="~/Components/vue-highcharts.js"></script>
     <script src="~/Components/piechart.js"></script>
     <script src="~/Components/dashboard.js"></script>
+    <script src="~/Components/settings/donutSettings.js"></script>
+    <script src="~/Components/settings/pie-settings.js"></script>
+    <script src="~/Components/settings/settings.js"></script>
+
+
 }
 
 @section Scripts
-{
-  
+    {
+
     <script src="~/js/app.js"></script>
 
     <script src="~/Components/item.js"></script>
     <script src="~/js/quick-sidebar.js"></script>
-   
 
-   
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue-feather-icons@4.7.1/dist/vue-feather-icons.min.js"></script>
-    
+
 
 
 }
