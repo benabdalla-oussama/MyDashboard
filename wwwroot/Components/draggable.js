@@ -1,7 +1,8 @@
 ﻿
 
     Vue.component('draggpable', {
-        template: ` <div class="vdr"
+        template: `
+                    <div class="vdr"
                     :style="style"
                     :class="{
                       draggable: draggable,
@@ -13,6 +14,7 @@
                        v-on:mousedown.stop="elmDown"
                        v-on:touchstart.prevent.stop="elmDown"
                        v-on:dblclick="fillParent" >
+                   
                     <div
                       v-for="handle in handles"
                       v-if="resizable"
@@ -202,6 +204,9 @@
             }
         },
         methods: {
+            deleteItem() {
+                this.$eventHub.$emit('deleteChart', this.index);
+            },
             reviewDimensions: function () {
                 if (this.minw > this.w) this.width = this.minw
                 if (this.minh > this.h) this.height = this.minh
@@ -294,6 +299,8 @@
                         if (this.width < this.parentW) {
                             this.width++
                             this.elmW++
+                            this.$emit('resize', this.height, this.width, this.index);
+
                         }
                         if (this.left > this.parentX) {
                             this.left--
@@ -304,12 +311,16 @@
                         if (this.height < this.parentH) {
                             this.height++
                             this.elmH++
+                            this.$emit('resize', this.height, this.width, this.index);
+
                         }
                         if (this.top > this.parentY) {
                             this.top--
                             this.elmY--
                         }
                     }
+                    this.$emit('resize', this.height, this.width, this.index);
+
                     this.$emit('resizing', this.left, this.top, this.width, this.height)
                     
                 }
@@ -358,6 +369,7 @@
                     this.top = (Math.round(this.elmY / this.grid[1]) * this.grid[1])
                     this.width = (Math.round(this.elmW / this.grid[0]) * this.grid[0])
                     this.height = (Math.round(this.elmH / this.grid[1]) * this.grid[1])
+                    this.$emit('resize', this.height, this.width, this.index);
                     this.$emit('resizing', this.left, this.top, this.width, this.height)
                 } else if (this.dragging) {
                     if (this.parent) {
@@ -385,15 +397,15 @@
                 this.handle = null
                 if (this.resizing) {
                     this.resizing = false
-  
                     this.$emit('resize',this.height,this.width,this.index);
                     this.$emit('resizestop', this.left, this.top, this.width, this.height)
-
+                    
                 }
                 if (this.dragging) {
                     this.dragging = false
                     this.$emit('dragstop', this.left, this.top)
                 }
+                this.$eventHub.$emit('ChartResized', this.index, this.left, this.top);
                 this.elmX = this.left
                 this.elmY = this.top
             }

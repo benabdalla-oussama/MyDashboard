@@ -5,73 +5,149 @@
 
 <div id="container1">
 
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Charts</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+
+
+                    <li>
+                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-group"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-barcode"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a v-on:click="chooseSettings('areaSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                            <i v-on:click="chooseSettings('areaSettings')"  class="fa fa-bar-chart-o"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                            <i v-on:click="chooseSettings('donutSettings')" class="fa fa-pie-chart"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-calendar"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-envelope"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-bullhorn"></i>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                            <i class="fa fa-map-marker"></i>
+
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+
+
     @* ToolBox Area *@
-    <div class="portlet light bordered">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="icon-settings font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">Charts</span>
+    @*<div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-green-sharp"></i>
+                    <span class="caption-subject font-green-sharp bold uppercase">Charts</span>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-group"></i>
+                    <div> Users </div>
+                    <span class="badge badge-danger"> 2 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-barcode"></i>
+                    <div> Products </div>
+                    <span class="badge badge-success"> 4 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <div> Vertical bar </div>
+                    <span class="badge badge-success"> 5 </span>
+                </a>
+                <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler">
+                    <i v-on:click="chooseSettings('donutSettings')"  class="fa fa-pie-chart"></i>
+                    <div> Pie Chart </div>
+                    <span class="badge badge-success"> 6 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn quick-sidebar-toggler">
+                    <i class="fa fa-calendar"></i>
+                    <div> Calendar </div>
+                    <span class="badge badge-success"> 4 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-envelope"></i>
+                    <div> Inbox </div>
+                    <span class="badge badge-info"> 12 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-bullhorn"></i>
+                    <div> Notification </div>
+                    <span class="badge badge-danger"> 3 </span>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-map-marker"></i>
+                    <div> Locations </div>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-money">
+                        <i></i>
+                    </i>
+                    <div> Finance </div>
+                </a>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" class="
+                       ">
+                        <i class="icon-logout"></i>
+                    </a>
+                </li>
             </div>
 
+
         </div>
-        <div class="portlet-body">
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-group"></i>
-                <div> Users </div>
-                <span class="badge badge-danger"> 2 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-barcode"></i>
-                <div> Products </div>
-                <span class="badge badge-success"> 4 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-bar-chart-o"></i>
-                <div> Vertical bar </div>
-                <span class="badge badge-success"> 5 </span>
-            </a>
-            <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler">
-                <i class="fa fa-pie-chart"></i>
-                <div> Pie Chart </div>
-                <span class="badge badge-success"> 6 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn quick-sidebar-toggler">
-                <i class="fa fa-calendar"></i>
-                <div> Calendar </div>
-                <span class="badge badge-success"> 4 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-envelope"></i>
-                <div> Inbox </div>
-                <span class="badge badge-info"> 12 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-bullhorn"></i>
-                <div> Notification </div>
-                <span class="badge badge-danger"> 3 </span>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-map-marker"></i>
-                <div> Locations </div>
-            </a>
-            <a href="javascript:;" class="icon-btn">
-                <i class="fa fa-money">
-                    <i></i>
-                </i>
-                <div> Finance </div>
-            </a>
-            <li class="dropdown dropdown-quick-sidebar-toggler">
-                <a href="javascript:;" class="
-                   ">
-                    <i class="icon-logout"></i>
-                </a>
-            </li>
-        </div>
-
-
-    </div>
-    <br />
-
+        <br />*@
+    
+   
     @* Dashboard Area*@
 
     <dashboard ref="mydash"></dashboard>
@@ -119,7 +195,8 @@
                 </div>
                 <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_2">
                     <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
-                        <h3> Fielters </h3>
+                        <h3> Filters </h3>
+                        <filters></filters>
                     </div>
                 </div>
                 <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_3">
@@ -135,7 +212,7 @@
                             <div class="mt-actions">
 
                                 <template v-for="(element, index) in dashboards">
-                                    <div class="mt-action" v-on:click="select(element)">
+                                    <div class="mt-action" v-on:click="select(index,element)">
 
                                         <div class="mt-action-body">
                                             <div class="container">
@@ -176,8 +253,16 @@
         </div>
     </div>
 
+    <filter-settings></filter-settings>
 
+    <a v-on:click="saveDashboars()" href="#" class="float">
+        <i class="fa fa-floppy-o my-float" style="font-size:25px;"></i>
+    </a>
 
+    <div class="label-container">
+        <div class="label-text">Save</div>
+        <i class="fa fa-play label-arrow"></i>
+    </div>
 
 </div>
 
@@ -219,18 +304,43 @@
     <script src="~/js/portlet-draggable.js"></script>
     <script src="~/Components/draggable.js"></script>
     <script src="~/Components/vue-highcharts.js"></script>
+    <script src="~/Components/filters/filterSettings.js"></script>
     <script src="~/Components/piechart.js"></script>
     <script src="~/Components/dashboard.js"></script>
     <script src="~/Components/settings/donutSettings.js"></script>
+    <script src="~/Components/settings/areaSettings.js"></script>
     <script src="~/Components/settings/pie-settings.js"></script>
     <script src="~/Components/settings/settings.js"></script>
+    <script src="~/Components/filters.js"></script>
+
+
+
 
 
 }
 
 @section Scripts
     {
+    <script>
 
+        $(function () {
+            //----- OPEN
+            $('[data-popup-open]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+
+                e.preventDefault();
+            });
+
+            //----- CLOSE
+            $('[data-popup-close]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+                e.preventDefault();
+            });
+        });
+    </script>
     <script src="~/js/app.js"></script>
 
     <script src="~/Components/item.js"></script>

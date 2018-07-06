@@ -7,6 +7,8 @@ using DynamicCharts.Data;
 using DynamicCharts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
+using Attribute = DynamicCharts.Models.Attribute;
 
 namespace DynamicCharts.Controllers
 {
@@ -29,38 +31,56 @@ namespace DynamicCharts.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<int> SaveDashboard( [Bind("ID,Title,ReleaseDate,Genre,Price")] List<PieChart> piecharts)
+        //{
 
-        [HttpGet("getData2/{xAxis}/{yAxis}")]
-        public IEnumerable<Object> getData2(string xAxis , string yAxis)
+        //    return 1;
+        //}
+
+        [HttpGet("data/")]
+        public IEnumerable<Object> getMyData()
         {
-            List<Country> countries = new List<Country>()
-            {
-                new Country{Name = "Tunisie", Sales = 150 , Population = 12000000} ,
-                new Country{Name = "US", Sales = 250, Population = 244000000} ,
-                new Country{Name = "France", Sales = 200, Population = 250000000} ,
-                new Country{Name = "Turkey", Sales = 120, Population = 79000000} 
-
-            };
-            List<Object> modelView = new List<Object>();
-            foreach (var item in countries)
-            {
-
-                dynamic myobject = new ExpandoObject();
-
-                IDictionary<string, object> myUnderlyingObject = myobject;
-
-                myUnderlyingObject.Add(xAxis, GetPropValue(item, xAxis));
-                myUnderlyingObject.Add(yAxis, GetPropValue(item, yAxis));
-                modelView.Add(myUnderlyingObject);
-
-            }
-            return modelView;
+            return _context.Datas.ToList();
         }
 
-        [HttpGet("getData/{xAxis}/{yAxis}")]
-        public IEnumerable<Object> getData(string xAxis, string yAxis)
+        //[HttpGet("getData2/{xAxis}/{yAxis}")]
+        //public IEnumerable<Object> getData2(string xAxis , string yAxis)
+        //{
+
+        //    List<List<Object>> modelView = new List<List<Object>>();
+        //    foreach (var item in _context.Countrys.ToList())
+        //    {
+        //        List<Object> list = new List<Object>();
+        //        list.Add(GetPropValue(item, xAxis));
+        //        list.Add(GetPropValue(item, yAxis));
+        //        modelView.Add(list);
+
+        //    }
+        //    return modelView;
+        //}
+
+        //[HttpGet("getData/{xAxis}/{yAxis}")]
+        //public IEnumerable<Object> getData(string xAxis, string yAxis)
+        //{
+
+        //    List<List<Object>> modelView = new List<List<Object>>();
+        //    foreach (var item in _context.Countrys.ToList())
+        //    {
+        //        List<Object> list = new List<Object>();
+        //        list.Add(GetPropValue(item, xAxis));
+        //        list.Add(GetPropValue(item, yAxis));
+        //        modelView.Add(list);
+
+        //    }
+        //    return modelView;
+        //}
+
+        [HttpPost("getData2/{xAxis}/{yAxis}")]
+        public IEnumerable<Object> getData2(string xAxis, string yAxis , string filters)
         {
-           
+            var myfilters = filters.FromJson<List<FilterModelView>>();
             List<List<Object>> modelView = new List<List<Object>>();
             foreach (var item in _context.Countrys.ToList())
             {
@@ -70,6 +90,58 @@ namespace DynamicCharts.Controllers
                 modelView.Add(list);
 
             }
+            return modelView;
+        }
+
+        [HttpPost("getData/{xAxis}/{yAxis}")]
+        public IEnumerable<Object> getData(string xAxis, string yAxis, string filters)
+        {
+            var myfilters = filters.FromJson<List<FilterModelView>>();
+            List<List<Object>> modelView = new List<List<Object>>();
+            foreach (var item in _context.Countrys.ToList())
+            {
+                List<Object> list = new List<Object>();
+                list.Add(GetPropValue(item, xAxis));
+                list.Add(GetPropValue(item, yAxis));
+                modelView.Add(list);
+
+            }
+            return modelView;
+        }
+
+
+        [HttpGet("getAttributes")]
+        public IEnumerable<Object> getAttributes()
+        {
+
+            List<Attribute> modelView = new List<Attribute>();
+            Filter filter1 = new Filter()
+            {
+                Name = "Entre",
+                ParamsNumber = 2 , 
+                Type = "Number"
+            };
+            Filter filter2 = new Filter()
+            {
+                Name = "Dans",
+                ParamsNumber = 2,
+                Type = "Number"
+            };
+            Filter filter3 = new Filter()
+            {
+                Name = "Dans2",
+                ParamsNumber = 2,
+                Type = "Number"
+            };
+            Attribute attribute1 = new Attribute() {Name = "Population", Filters = new List<Filter>()};
+            attribute1.Filters.Add(filter1);
+            Attribute attribute2 = new Attribute() { Name = "Sales", Filters = new List<Filter>() };
+            attribute2.Filters.Add(filter2);
+            attribute2.Filters.Add(filter3);
+
+            modelView.Add(attribute1);
+            modelView.Add(attribute2);
+
             return modelView;
         }
 

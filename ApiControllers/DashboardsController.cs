@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DynamicCharts.Data;
 using DynamicCharts.Models;
+using NuGet.Protocol;
 
 namespace DynamicCharts.ApiControllers
 {
@@ -86,18 +87,58 @@ namespace DynamicCharts.ApiControllers
 
         // POST: api/Dashboards
         [HttpPost]
-        public async Task<IActionResult> PostDashboard([FromBody] Dashboard dashboard)
+        public async Task<IActionResult> PostDashboard(string dashboard)
         {
-            if (!ModelState.IsValid)
+            
+                var dash = dashboard.FromJson<Dashboard>();
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+            try
             {
-                return BadRequest(ModelState);
+                var piecharts = dash.Piecharts;
+                dash.Piecharts = null;
+                if (dash.Id == 0)
+                {
+                    _context.Dashboards.Add(dash);
+                    //
+                    await _context.SaveChangesAsync();
+                }
+
+                //
+                foreach (var chart in piecharts)
+                {
+                    if (chart.Id == -1)
+                    {
+                        chart.Id = 0;
+                        chart.Dashboard = null;
+                        chart.DashboardId = dash.Id;
+                        _context.PieCharts.Add(chart);
+                    }
+                    else
+                    {
+                        chart.Dashboard = null;
+                        chart.DashboardId = dash.Id;
+                        _context.PieCharts.Update(chart);
+                    }
+
+                }
+                _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.PieCharts OFF");
+                //_context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Dashboards ON");
+                await _context.SaveChangesAsync();
+               
+            }
+            catch (Exception ex)
+            {
+                int i = 0;
             }
 
-            _context.Dashboards.Add(dashboard);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDashboard", new { id = dashboard.Id }, dashboard);
+            return CreatedAtAction("GetDashboard", new { id = dash.Id }, dashboard);
         }
+
+
 
         // DELETE: api/Dashboards/5
         [HttpDelete("{id}")]

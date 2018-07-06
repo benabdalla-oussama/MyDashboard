@@ -7,9 +7,13 @@ namespace DynamicCharts.Models
 {
     public class chart
     {
-        
-        public string detail { get; set; }
-       
+
+        public int Id { get; set; }
+        public string type { get; set; }
+        public string title { get; set; }
+        public string xAxis { get; set; }
+        public string yAxis { get; set; }
+        public string url { get; set; }
         public Dashboard Dashboard { get; set; }
 
     }

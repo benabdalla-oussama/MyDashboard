@@ -11,9 +11,10 @@ using System;
 namespace DynamicCharts.Migrations
 {
     [DbContext(typeof(dbcontext))]
-    partial class dbcontextModelSnapshot : ModelSnapshot
+    [Migration("20180702083002_mig9")]
+    partial class mig9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,8 +56,6 @@ namespace DynamicCharts.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Title");
-
                     b.Property<string>("Url");
 
                     b.Property<string>("XAxis");
@@ -73,7 +72,7 @@ namespace DynamicCharts.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DashboardId");
+                    b.Property<int?>("DashboardId");
 
                     b.Property<string>("Detail");
 
@@ -85,17 +84,15 @@ namespace DynamicCharts.Migrations
 
                     b.Property<string>("YAxis");
 
-                    b.Property<string>("filters");
-
-                    b.Property<double>("high");
+                    b.Property<int>("high");
 
                     b.Property<string>("options");
 
-                    b.Property<double>("width");
+                    b.Property<int>("width");
 
-                    b.Property<double>("x");
+                    b.Property<int>("x");
 
-                    b.Property<double>("y");
+                    b.Property<int>("y");
 
                     b.HasKey("Id");
 
@@ -108,8 +105,7 @@ namespace DynamicCharts.Migrations
                 {
                     b.HasOne("DynamicCharts.Models.Dashboard", "Dashboard")
                         .WithMany("Piecharts")
-                        .HasForeignKey("DashboardId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DashboardId");
                 });
 #pragma warning restore 612, 618
         }
