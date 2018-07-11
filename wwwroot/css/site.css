@@ -272,3 +272,12 @@ a.float:hover + div.label-container{
 .highcharts-background {
     fill-opacity :0!important
 }
+
+.floatSettings {
+    position: fixed;
+    width: 100px;
+    height: 45px;
+    bottom: 5px;
+    right: 5px;
+    text-align: center;
+}

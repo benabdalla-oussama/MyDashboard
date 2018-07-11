@@ -52,7 +52,7 @@
                                                 <label for="checkbox1_2">
                                                     <span></span>
                                                     <span class="check"></span>
-                                                    <span class="box"></span> Bar
+                                                    <span class="box"></span> Line
                                                 </label>
                                             </div>
                                    
@@ -162,7 +162,7 @@
                 if (this.formData.area)
                     this.chart.options.chart.type = "area";
                 else
-                    this.chart.options.chart.type = "bar";
+                    this.chart.options.chart.type = "line";
                
                 this.chart.options.dataconfig = this.formData.datasource[this.formData.dataOptions];
                 console.log(this.chart.options.dataconfig);
@@ -196,7 +196,7 @@
                 if (this.chart.options.chart.type === "area")
                     this.formData.area=true;
                 else
-                    if (this.chart.options.chart.type === "bar")
+                    if (this.chart.options.chart.type === "line")
                         this.formData.area = false;
 
                 this.formData.dataOptions = this.chart.options.url;
@@ -270,7 +270,7 @@ var AreaData = {
                 }
             }
         },
-        bar: {
+        line: {
             pointStart: 1940,
             marker: {
                 enabled: false,

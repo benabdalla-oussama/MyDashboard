@@ -1,29 +1,30 @@
 ﻿
 
-Vue.component('pie_chart',
+Vue.component('chart',
     {
         template: ` <div>
-            <vue-highcharts :options="pieOptions"  :high="myhigh" :width="mywidth" ref="pieChart"></vue-highcharts>
+            <vue-highcharts :options="pieOptions"  :high="myhigh" :width="mywidth" :type="mytype" ></vue-highcharts>
     </div>
      `,
-        props: ['title', 'xAxis', 'yAxis', 'detail', 'url', 'high', 'width', 'msg', 'options','filters'],
+        props: ['title', 'xAxis', 'yAxis', 'detail', 'url', 'high', 'width', 'msg', 'options','filters','type'],
 
         data() {
 
             return {
                 pieOptions: [],
-                myhigh: 400,
-                mywidth: 400
+                myhigh: 500,
+                mywidth: 500,
+                mytype: ''
             }
         },
         mounted() {
+            this.mytype = this.type;
             for (var index in this.filters) {
                 this.$eventHub.$emit('push-filter', this.filters[index]);
             }
         },
         created: function () {
             this.pieOptions = this.options;
-            
             this.getdata();
         },
         methods: {
@@ -33,22 +34,28 @@ Vue.component('pie_chart',
             getdata() {
                 var vm = this;
                 var d = JSON.stringify(this.filters);
-                //axios({
-                //        method: 'post',
-                //        url: this.url + this.xAxis + "/" + this.yAxis,
-                //        data: "filters=" + d
-                //    })
-                //    .then(function (response) {
-                //        console.log(response.data);
+                axios({
+                        method: 'post',
+                        url: this.url ,
+                        data: "filters=" + d
+                    })
+                    .then(function (response) {
+                        console.log(response.data);
+
                        
-                //        let s = Object.assign({}, vm.pieOptions);
-                //        //var s = PieData2.clone();
-                //        s.series[0].data = response.data;
-                //        vm.pieOptions = s;
-                //    })
-                //    .catch(function (error) {
-                //        console.log(error);
-                //    });
+                      
+                        var s = jQuery.extend(true, {}, vm.pieOptions);
+                      
+                        //s.series = [];
+                        s.series = response.data;
+                        vm.pieOptions = s;
+                        //vm.$eventHub.$emit('changeSeries', s);
+                        //vm.options = vm.pieOptions;
+                        
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
 
                 },
         },
@@ -69,6 +76,10 @@ Vue.component('pie_chart',
             width: function () {
                 console.log("Width Updated " + this.width);
                 this.mywidth = this.width;
+            },
+            type: function () {
+                console.log("Width Updated " + this.width);
+                this.mytype = this.type;
             },
             xAxis: function () {
                 console.log("xAxis Updated " + this.xAxis);

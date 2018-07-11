@@ -11,7 +11,7 @@ Vue.component('dashboard',
                               
                                 <draggpable :parent="true" v-on:resize="resize" :resizable="true" :h="element.high" :w="element.width" :elementx="element.elementx" :elementy="element.elementy" :index="index" :x="element.x" :y="element.y" style="border: 2px solid; border-color: #64B5F6">
                                     <div v-on:click="select(index)">
-                                        <pie_chart :filters="element.filters" :options="element.options" :msg="msg" :xAxis="element.xAxis" :high="element.high" :width="element.width" :yAxis="element.yAxis" :title="element.title" :url="element.url" :detail="element.detail"></pie_chart>
+                                        <chart :filters="element.filters" :options="element.options" :msg="msg" :xAxis="element.xAxis" :high="element.high" :width="element.width" :type="element.type" :yAxis="element.yAxis" :title="element.title" :url="element.url" :detail="element.detail"></chart>
                                     </div>
                                 </draggpable>
                             
@@ -61,7 +61,11 @@ Vue.component('dashboard',
                 this.mobileOpen = !this.mobileOpen
             },
             clear() {
-                this.charts = [];
+               
+                    while (this.charts.length !== 0) {
+                        this.charts.shift();
+                    }
+                
             },
             changeChart(content) {
 
@@ -98,7 +102,8 @@ Vue.component('dashboard',
             add(chartOptions) {
                 var x = $("#dashboard1").position();
                 var newchart = {
-                    id: -1 ,
+                    id: -1,
+                    type: chartOptions.chart.type,
                     xAxis: chartOptions.dataconfig.xAxis,
                     yAxis: chartOptions.dataconfig.yAxis,
                     title: chartOptions.dataconfig.title,
@@ -167,6 +172,7 @@ Vue.component('dashboard',
                 var x = $("#dashboard1").position();
                 var newchart = {
                     id: item.id,
+                    type: item.type,
                     xAxis: item.xAxis,
                     yAxis: item.yAxis,
                     title: item.title,

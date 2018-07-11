@@ -6,82 +6,88 @@
 <div id="container1">
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Charts</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav">
-
-
-                    <li>
-                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-group"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-barcode"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a v-on:click="chooseSettings('areaSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
-                            <i v-on:click="chooseSettings('areaSettings')"  class="fa fa-bar-chart-o"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
-                            <i v-on:click="chooseSettings('donutSettings')" class="fa fa-pie-chart"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-calendar"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-envelope"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-bullhorn"></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
-                            <i class="fa fa-map-marker"></i>
-
-                        </a>
-                    </li>
-
-
-                </ul>
-
-            </div><!--/.nav-collapse -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Charts</a>
         </div>
-    </nav>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav">
+
+                <li>
+
+                    <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px;">
+                        <i class="fa fa-group"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a v-on:click="chooseSettings('scatterSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                        <i v-on:click="chooseSettings('scatterSettings')" class="fa fa-scatter-chart"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a v-on:click="chooseSettings('barSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                        <i v-on:click="chooseSettings('barSettings')" class="fa fa-bar-chart-o"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a v-on:click="chooseSettings('areaSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                        <i v-on:click="chooseSettings('areaSettings')" class="fa fa-area-chart"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a v-on:click="chooseSettings('donutSettings')" href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                        <i v-on:click="chooseSettings('donutSettings')" class="fa fa-pie-chart"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="icon-btn quick-sidebar-toggler" style="margin-right: 0px; border-width: 0px ;">
+                        <i class="fa fa-calendar"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                        <i class="fa fa-envelope"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                        <i class="fa fa-bullhorn"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="icon-btn" style="margin-right: 0px; border-width: 0px ;">
+                        <i class="fa fa-map-marker"></i>
+
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 
 
 
 
-    @* ToolBox Area *@
-    @*<div class="portlet light bordered">
+@* ToolBox Area *@
+@*<div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-green-sharp"></i>
@@ -146,125 +152,159 @@
 
         </div>
         <br />*@
-    
-   
-    @* Dashboard Area*@
-
-    <dashboard ref="mydash"></dashboard>
-
-    @* Side Bar Area*@
 
 
-    <a href="javascript:;" class="page-quick-sidebar-toggler">
-        <i class="icon-login"></i>
-    </a>
-    <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
-        <div class="page-quick-sidebar">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">
-                        Settings
-                        <span class="badge badge-danger">2</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab">
-                        Filters
-                        <span class="badge badge-success">7</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
-                        Pages
-                        <span class="badge badge-success">7</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content">
+@* Dashboard Area*@
 
-                <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_1">
-                    <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list" id="signup-form">
-                        @*-------------------------------------------------*@
-                        <h3 class="list-heading">Settings</h3>
+<dashboard ref="mydash"></dashboard>
 
-                        <settings :type="settings"></settings>
+@* Side Bar Area*@
 
-                        @*-------------------------------------------------*@
 
-                    </div>
+<a href="javascript:;" class="page-quick-sidebar-toggler">
+    <i class="icon-login"></i>
+</a>
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+    <div class="page-quick-sidebar">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">
+                    Settings
+                    <span class="badge badge-danger">2</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab">
+                    Filters
+                    <span class="badge badge-success">7</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                    Pages
+                    <span class="badge badge-success">7</span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane page-quick-sidebar-chat active" id="quick_sidebar_tab_1">
+                <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list" id="signup-form">
+                    @*-------------------------------------------------*@
+                    <h3 class="list-heading">Settings</h3>
+
+                    <settings :type="settings"></settings>
+
+                    @*-------------------------------------------------*@
+
                 </div>
-                <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_2">
-                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
-                        <h3> Filters </h3>
-                        <filters></filters>
-                    </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_2">
+                <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
+                    <h3> Filters </h3>
+                    <filters></filters>
                 </div>
-                <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_3">
-                    <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
-                        <div class="tab-pane active" id="tab_actions_pending">
-                            <div class="input-group">
-                                <input id="newpage" type="text" class="form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn blue" v-on:click="adddashboard" type="button">ADD</button>
-                                </span>
-                            </div>
-                            <!-- BEGIN: Actions -->
-                            <div class="mt-actions">
+            </div>
+            <div class="tab-pane page-quick-sidebar-chat" id="quick_sidebar_tab_3">
+                <div class="page-quick-sidebar-list" style="position: relative; overflow: hidden; width: auto; height: 684px;">
+                    <div class="tab-pane active" id="tab_actions_pending">
+                        <div class="input-group">
+                            <input id="newpage" type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn blue" v-on:click="adddashboard" type="button">ADD</button>
+                            </span>
+                        </div>
+                        <!-- BEGIN: Actions -->
+                        <div class="mt-actions">
 
-                                <template v-for="(element, index) in dashboards">
-                                    <div class="mt-action" v-on:click="select(index,element)">
+                            <template v-for="(element, index) in dashboards">
+                                <div class="mt-action" v-on:click="select(index,element)">
 
-                                        <div class="mt-action-body">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="mt-action-info col-md-2">
-                                                        <div class="mt-action-icon ">
-                                                            <i class="fa fa-line-chart"></i>
-                                                        </div>
-                                                        <div class="mt-action-details ">
-                                                            <span class="mt-action-author">{{element.title}}</span>
-
-                                                        </div>
+                                    <div class="mt-action-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="mt-action-info col-md-2">
+                                                    <div class="mt-action-icon ">
+                                                        <i class="fa fa-line-chart"></i>
                                                     </div>
-                                                    @*<div class="mt-action-datetime ">
+                                                    <div class="mt-action-details ">
+                                                        <span class="mt-action-author">{{element.title}}</span>
+
+                                                    </div>
+                                                </div>
+                                                @*<div class="mt-action-datetime ">
                                                             <span class="mt-action-date">{{element.date}}</span>
 
                                                         </div>*@
-                                                    <div class="mt-action-buttons col-md-1">
-                                                        <a href="javascript:;" class="btn btn-circle red-sunglo ">
-                                                            <i class="fa fa-trash-o"></i>
-                                                        </a>
-                                                    </div>
-
-
+                                                <div class="mt-action-buttons col-md-1">
+                                                    <a href="javascript:;" class="btn btn-circle red-sunglo ">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </a>
                                                 </div>
+
+
                                             </div>
                                         </div>
                                     </div>
-                                </template>
-                            </div>
-                            <!-- END: Actions -->
+                                </div>
+                            </template>
                         </div>
-
+                        <!-- END: Actions -->
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
     </div>
-
-    <filter-settings></filter-settings>
-
-    <a v-on:click="saveDashboars()" href="#" class="float">
-        <i class="fa fa-floppy-o my-float" style="font-size:25px;"></i>
+</div>
+<nav class="quick-nav">
+    <a class="quick-nav-trigger" href="#0">
+        <span aria-hidden="true"></span>
     </a>
+    <ul>
+        <li>
+            <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
+                <span>Purchase Metronic</span>
+                <i class="icon-basket"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
+                <span>Customer Reviews</span>
+                <i class="icon-users"></i>
+            </a>
+        </li>
+        <li>
+            <a href="http://keenthemes.com/showcast/" target="_blank">
+                <span>Showcase</span>
+                <i class="icon-user"></i>
+            </a>
+        </li>
+        <li>
+            <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
+                <span>Changelog</span>
+                <i class="icon-graph"></i>
+            </a>
+        </li>
+    </ul>
+    <span aria-hidden="true" class="quick-nav-bg"></span>
+</nav>
+<div class="quick-nav-overlay"></div>
 
-    <div class="label-container">
-        <div class="label-text">Save</div>
-        <i class="fa fa-play label-arrow"></i>
-    </div>
+<filter-settings></filter-settings>
+<a v-on:click="saveDashboars()" href="#" class="float">
+    <i class="fa fa-floppy-o my-float" style="font-size:25px;"></i>
+</a>
+
+<div class="label-container">
+    <div class="label-text">Save</div>
+    <i class="fa fa-play label-arrow"></i>
+</div>
 
 </div>
+
+
 
 <script>
 
@@ -305,10 +345,12 @@
     <script src="~/Components/draggable.js"></script>
     <script src="~/Components/vue-highcharts.js"></script>
     <script src="~/Components/filters/filterSettings.js"></script>
-    <script src="~/Components/piechart.js"></script>
+    <script src="~/Components/chart.js"></script>
     <script src="~/Components/dashboard.js"></script>
     <script src="~/Components/settings/donutSettings.js"></script>
     <script src="~/Components/settings/areaSettings.js"></script>
+    <script src="~/Components/settings/scatterSettings.js"></script>
+    <script src="~/Components/settings/barSettings.js"></script>
     <script src="~/Components/settings/pie-settings.js"></script>
     <script src="~/Components/settings/settings.js"></script>
     <script src="~/Components/filters.js"></script>
@@ -346,7 +388,7 @@
     <script src="~/Components/item.js"></script>
     <script src="~/js/quick-sidebar.js"></script>
 
-
+    <script src="~/js/utils/quick-nav.js"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue-feather-icons@4.7.1/dist/vue-feather-icons.min.js"></script>

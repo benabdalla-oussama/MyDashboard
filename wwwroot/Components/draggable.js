@@ -1,7 +1,7 @@
 ﻿
 
     Vue.component('draggpable', {
-        template: `
+        template: ` 
                     <div class="vdr"
                     :style="style"
                     :class="{
@@ -14,7 +14,10 @@
                        v-on:mousedown.stop="elmDown"
                        v-on:touchstart.prevent.stop="elmDown"
                        v-on:dblclick="fillParent" >
-                   
+                    
+                    
+                    
+                       
                     <div
                       v-for="handle in handles"
                       v-if="resizable"
@@ -24,6 +27,7 @@
                       :style="{ display: enabled ? ' block ' : 'none'}"
                       v-on:mousedown.stop.prevent="handleDown(handle, $event)" v-on:touchstart.stop.prevent="handleDown(handle, $event)" 
                     ></div>
+                  
                     <slot></slot>
                   </div> `,
 
@@ -171,14 +175,22 @@
             // touch events bindings
             document.documentElement.addEventListener('touchmove', this.handleMove, true)
             document.documentElement.addEventListener('touchend touchcancel', this.deselect, true)
-            document.documentElement.addEventListener('touchstart', this.handleUp, true)
+            document.documentElement.addEventListener('touchstart', this.handleUp, true) 
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.fixed-action-btn');
+                var instances = M.FloatingActionButton.init(elems, {
+                    direction: 'left'
+                });
+            });
+
             this.elmX = parseInt(this.$el.style.left)
             this.elmY = parseInt(this.$el.style.top)
             this.elmW = this.$el.offsetWidth || this.$el.clientWidth
             this.elmH = this.$el.offsetHeight || this.$el.clientHeight
             this.reviewDimensions();
             this.left = this.elementx;
-            this.top = this.elementy;
+            this.top = this.elementy; 
            
         },
         beforeDestroy: function () {

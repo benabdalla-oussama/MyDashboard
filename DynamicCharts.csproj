@@ -7,6 +7,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="NuGet.Protocol.Core.v3" Version="4.2.0" />
+    <PackageReference Include="vue" Version="2.5.16" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,10 +18,11 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\Components\chart\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Components\piechart.js" />
+    <None Include="wwwroot\Components\chart.js" />
   </ItemGroup>
 
 </Project>

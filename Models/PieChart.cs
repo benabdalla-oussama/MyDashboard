@@ -19,6 +19,7 @@ namespace DynamicCharts.Models
         public double high { get; set; }
         public double width { get; set; }
         public string options { get; set; }
+        public string type { get; set; }
         public string filters { get; set; }
         public int DashboardId { get; set; }
         public Dashboard Dashboard { get; set; }

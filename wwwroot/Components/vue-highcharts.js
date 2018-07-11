@@ -17,7 +17,7 @@
         high: {},
         width: {},
         highcharts: Object,
-        test: 'rr'
+        type: ' '
     },
     name: 'VueHighcharts',
     data() {
@@ -32,6 +32,7 @@
     },
 
     methods: {
+        
         getChart() {
             return this.chart
         },
@@ -73,21 +74,38 @@
                 this.chart = new highchartInstance.Chart(this.$el, this.options)
             }
         },
-    },
+    }
+    ,
 
+    created() {
+
+       
+        //this.$eventHub.$on('changeSeries', this.changeSeries);
+      
+    }
+    ,
     watch: {
-        test: function (val) {
-
-            console.log('heyyyy')
-        },
+       
         options: function (options) {
             console.log("Options Updated");
-            if (!this.getChart() && options) {
+            if (this.type === "pie") {
 
-                this.init()
+                if (!this.getChart() && options) {
+
+                    this.init();
+                } else {
+                    this.getChart().update(options);
+                }
             } else {
-                this.getChart().update(this.options)
+                if (options) {
+
+                    let highchartInstance = this.highcharts || Highcharts
+                    this.chart = new highchartInstance.Chart(this.$el, this.options)
+                    
+                }
             }
+            //this.getChart().setSize(this.high, this.width)
+
         },
         high: function (options) {
             console.log("High Updated");

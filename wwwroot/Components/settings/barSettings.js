@@ -1,35 +1,8 @@
-﻿Vue.component("donutSettings",
+﻿Vue.component("barSettings",
     {
         template:
             ` <form  class="form-horizontal" style="margin: 5px"   v-on:submit.prevent="processForm">
                             <div class="form-body">
-
-                            <div class="form-group form-md-checkboxes">
-                                    <label class="col-md-3 control-label" for="form_control_1">Chart</label>
-                                    <div class="col-md-9">
-                                        <div class="md-checkbox-list">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" id="checkbox33" v-bind:true-value="true" v-bind:false-value="false" class="md-check"  v-model="formData.pie">  
-                                                <label for="checkbox33">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> Pie
-                                                </label>
-                                            </div>
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" id="checkbox44" class="md-check" v-bind:true-value="false" v-bind:false-value="true"   v-model="formData.pie">
-                                                <label for="checkbox44">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> Donut
-                                                </label>
-                                            </div>
-                                   
-                                 
-                                      
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-3 control-label" for="form_control_1">Title</label>
                                     <div class="col-md-9">
@@ -46,14 +19,7 @@
                                         <span class="help-block">Some help goes here...</span>
                                     </div>
                                 </div>
-                                <div class="form-group form-md-line-input has-warning">
-                                    <label class="col-md-3 control-label" for="form_control_1">Series Name</label>
-                                    <div class="col-md-9">
-                                        <input id="series" type="text" class="form-control" placeholder="" v-model="formData.series">
-                                        <div class="form-control-focus"> </div>
-                                        <span class="help-block">Some help goes here...</span>
-                                    </div>
-                                </div>
+                           
                              
                                 
                                 <div class="form-group form-md-line-input has-success">
@@ -69,7 +35,32 @@
                                     </div>
                                 </div>
                             
-                           
+                                   <div class="form-group form-md-checkboxes">
+                                    <label class="col-md-3 control-label" for="form_control_1">Chart</label>
+                                    <div class="col-md-9">
+                                        <div class="md-checkbox-list">
+                                            <div class="md-checkbox">
+                                                <input type="checkbox" id="checkbox1_1" v-bind:true-value="true" v-bind:false-value="false" class="md-check"  v-model="formData.area">  
+                                                <label for="checkbox1_1">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> Area
+                                                </label>
+                                            </div>
+                                            <div class="md-checkbox">
+                                                <input type="checkbox" id="checkbox1_2" class="md-check" v-bind:true-value="false" v-bind:false-value="true"   v-model="formData.area">
+                                                <label for="checkbox1_2">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> Line
+                                                </label>
+                                            </div>
+                                   
+                                 
+                                      
+                                        </div>
+                                    </div>
+                                </div>
                            
                                 <div class="form-group form-md-checkboxes">
                                     <label class="col-md-3 control-label" for="form_control_1">Chart</label>
@@ -124,18 +115,20 @@
                         </form> `,
         props: ['chart', 'updated'],
         data: function () {
-            return { formData: {
-                title: '', 
-                subtitle: '',
-                series: '',
-                dataOptions: '',
-                option3d: false, 
-                datalabel: false,
-                legend: false,
-                color: true,
-                datasource: [],
-                pie : true
-            } }
+            return {
+                formData: {
+                    title: '',
+                    subtitle: '',
+                    series: '',
+                    dataOptions: '',
+                    option3d: false,
+                    datalabel: false,
+                    area: true,
+                    legend: false,
+                    color: true,
+                    datasource: []
+                }
+            }
         },
         methods: {
             getdata() {
@@ -148,7 +141,7 @@
                     success: function (data) {
 
                         $this.formData.datasource = data;
-                       
+
                     }, //End of AJAX Success function
 
                     failure: function (data) {
@@ -162,19 +155,15 @@
 
                 });
             },
-            processForm: function() {
+            processForm: function () {
 
-                if (this.formData.pie)
-                    this.chart.options.plotOptions.pie.innerSize = "0";
-                else
-                    this.chart.options.plotOptions.pie.innerSize = "100";
                 this.chart.options.title.text = this.formData.title;
                 this.chart.options.subtitle.text = this.formData.subtitle;
-                this.chart.options.series[0].colorByPoint = this.formData.color;
-                this.chart.options.series[0].name = this.formData.series;
-                this.chart.options.chart.options3d.enabled = this.formData.option3d;
-                this.chart.options.plotOptions.pie.showInLegend = this.formData.legend;
-                this.chart.options.plotOptions.pie.dataLabels.enabled = this.formData.datalabel;
+                //if (this.formData.area)
+                //    this.chart.options.chart.type = "area";
+                //else
+                //    this.chart.options.chart.type = "line";
+
                 this.chart.options.dataconfig = this.formData.datasource[this.formData.dataOptions];
                 console.log(this.chart.options.dataconfig);
 
@@ -183,7 +172,7 @@
                 } else {
                     this.$eventHub.$emit('change-chart', this.chart);
                     console.log("We are Done!");
-                    
+
                 }
                 this.updated = false;
                 this.formData.title = '';
@@ -193,26 +182,24 @@
                 this.formData.option3d = false;
                 this.formData.legend = false;
                 this.formData.datalabel = false;
+                this.formData.area = true;
+
+
                 this.formData.dataOptions = '';
                 $("#submitbtn").html('Add');
             },
             loadSettings() {
-              
-                this.formData.title = this.chart.options.title.text ;
+
+                this.formData.title = this.chart.options.title.text;
                 this.formData.subtitle = this.chart.options.subtitle.text;
-                this.formData.color = this.chart.options.series[0].colorByPoint;
-                this.formData.series = this.chart.options.series[0].name ;
-                this.formData.option3d = this.chart.options.chart.options3d.enabled ;
-                this.formData.legend = this.chart.options.plotOptions.pie.showInLegend ;
-                this.formData.datalabel = this.chart.options.plotOptions.pie.dataLabels.enabled;
+
+                //if (this.chart.options.chart.type === "area")
+                //    this.formData.area = true;
+                //else
+                //    if (this.chart.options.chart.type === "line")
+                //        this.formData.area = false;
+
                 this.formData.dataOptions = this.chart.options.url;
-
-                if (this.chart.options.plotOptions.pie.innerSize === "0")
-                    this.formData.pie = true;
-                else
-                    if (this.chart.options.plotOptions.pie.innerSize === "100")
-                    this.formData.pie = false;
-
                 console.log('Form Data Updated');
                 $("#submitbtn").html('Update');
                 this.updated = true;
@@ -220,58 +207,89 @@
         }
         ,
         mounted() {
-         
+
         },
         created() {
-            this.chart.options = PieData2;
+            this.chart.options = barData;
             this.getdata();
             console.log('donut Created');
             this.$eventHub.$on('loadSettings', this.loadSettings);
         },
         watch: {
             chart: function () {
-                console.log(this.updated+"Chart Updated " + this.chart);
+                console.log(this.updated + "Chart Updated " + this.chart);
                 this.loadSettings();
             }
         },
 
     });
-var PieData2 = {
 
+var barData =
+{
     chart: {
-        type: 'pie',
-        
-        backgroundColor: null,
-        options3d: {
-            enabled: true,
-            alpha: 45,
-            beta: 0
-        }
+        type: 'bar'
     },
     title: {
-        text: 'Dashboard 1'
+        text: 'Historic World Population by Region'
     },
     subtitle: {
-        text: 'Pie in Highcharts'
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
     },
     credits: {
         enabled: false
     },
-    plotOptions: {
-        pie: {
-            innerSize: 0,
-            allowPointSelect: true,
-            cursor: 'pointer',
-            depth: 35,
-            dataLabels: {
-                enabled: false,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                }
-            },
-            showInLegend: true
-        }
-    },
-    series: [{}]
-}
+        series: [
+            {}
+            ]
+
+    } 
+//{
+//    name: 'Year 1800',
+//        data: [107, 31, 635, 203, 2]
+//}, {
+//    name: 'Year 1900',
+//        data: [133, 156, 947, 408, 6]
+//}, {
+//    name: 'Year 2000',
+//        data: [814, 841, 3714, 727, 31]
+//}, {
+//    name: 'Year 2016',
+//        data: [1216, 1001, 4436, 738, 40]
+//}
